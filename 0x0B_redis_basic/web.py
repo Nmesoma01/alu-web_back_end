@@ -22,10 +22,14 @@ def data_cacher(method: Callable) -> Callable:
         redis_store.incr(f'count:{url}')
         result = redis_store.get(f'result:{url}')
         if result:
-            return result.decode('utf-8')
-        result = method(url)
-        redis_store.set(f'count:{url}', 0)
-        redis_store.setex(f'result:{url}', 10, result)
+         ttl = redis_store.ttl(f'result:{url}')
+        if ttl > 0:
+         return result.decode('utf-8')  # Cache still valid, return cached result
+        else:
+         redis_store.delete(f'result:{url}')
+         result = method(url)
+         redis_store.set(f'count:{url}', 0)
+         redis_store.setex(f'result:{url}', 10, result)
         return result
     return invoker
 
