@@ -18,7 +18,6 @@ def print_nginx_request_logs(nginx_collection):
     ))
     print('{} status check'.format(status_checks_count))
 
-
 def run():
     '''Provides some stats about Nginx logs stored in MongoDB.
     '''
