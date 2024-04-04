@@ -1,0 +1,21 @@
+{
+    "name": "0x06-unittests_in_js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "0-calcu.js",
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^4.4.1",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-jest": "^27.9.0",
+        "mocha": "^10.4.0",
+        "sinon": "^9.2.4"
+    }
+}
